@@ -5,9 +5,17 @@
 3. ScaLAPACKの動作(CPU)
 
 ## 実行上の注意
-ツールの導入時は必ずホームディレクトリ(`/home/user/`)内ににて行うようにします。
-`cd`と打てばホームディレクトリに移動できるので、ツールをインストールする際は必ずこの操作を行うようにしてください。
+ツールの導入時は必ずホームディレクトリ(`/home/user/`)内ににて行うようにします。<br/>
+`cd`と打てばホームディレクトリに移動できるので、ツールをインストールする際は必ずこの操作を行うようにしてください。<br/>
 基本的には、以下のコマンドを順番に実行すれば、全てのツールがインストールできるようになっておりますが、一部ご使用状態に合わせてファイルの編集を行う必要がありますのであらかじめご注意のほどお願いいたします。
+
+## 事前準備
+- 会員登録
+- `nvd2dl`インスタンスの作成
+- インスタンスへの接続確認
+[参考](https://gpu-advance.highreso.jp/blog/?p=232)
+- VSCodeからのファイル編集環境確立(オプション)
+[参考](https://gpu-advance.highreso.jp/blog/?p=301)
 
 ## Nvidi HPC SDKの導入
 ```bash
@@ -47,7 +55,8 @@ wget http://www.netlib.org/lapack/lapack-3.4.0.tgz
 tar -zxvf lapack-3.4.0.tgz
 cd lapack-3.4.0.tgz
 cp INSTALL/make.inc.gfortran make.inc
-## make.incをhttps://thelinuxcluster.com/2012/04/09/building-lapack-3-4-with-intel-and-gnu-compiler/ に従って編集すること
+## make.incをhttps://thelinuxcluster.com/2012/04/09/building-lapack-3-4-with-intel-and-gnu-compiler/ に従って編集しましょう
+
 make lapacklib
 make clean
 mkdir -p /usr/local/lapack
