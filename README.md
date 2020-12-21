@@ -4,12 +4,17 @@
 2. FTTW3の動作(CPU)
 3. ScaLAPACKの動作(CPU)
 
+## 実行上の注意
+ツールの導入時は必ずホームディレクトリ(`/home/user/`)内ににて行うようにします。
+`cd`と打てばホームディレクトリに移動できるので、ツールをインストールする際は必ずこの操作を行うようにしてください。
+基本的には、以下のコマンドを順番に実行すれば、全てのツールがインストールできるようになっておりますが、一部ご使用状態に合わせてファイルの編集を行う必要がありますのであらかじめご注意のほどお願いいたします。
+
 ## Nvidi HPC SDKの導入
 ```bash
 cd
-sudo wget https://developer.download.nvidia.com/hpc-sdk/20.11/nvhpc-20-11_20.11_amd64.deb
-sudo wget https://developer.download.nvidia.com/hpc-sdk/20.11/nvhpc-2020_20.11_amd64.deb 
-sudo wget https://developer.download.nvidia.com/hpc-sdk/20.11/nvhpc-20-11-cuda-multi_20.11_amd64.deb
+wget https://developer.download.nvidia.com/hpc-sdk/20.11/nvhpc-20-11_20.11_amd64.deb
+wget https://developer.download.nvidia.com/hpc-sdk/20.11/nvhpc-2020_20.11_amd64.deb 
+wget https://developer.download.nvidia.com/hpc-sdk/20.11/nvhpc-20-11-cuda-multi_20.11_amd64.deb
 sudo apt-get install ./nvhpc-20-11_20.11_amd64.deb ./nvhpc-2020_20.11_amd64.deb ./nvhpc-20-11-cuda-multi_20.11_amd64.deb
 ```
 ## makeとvimの導入
