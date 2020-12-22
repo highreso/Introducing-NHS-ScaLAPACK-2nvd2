@@ -57,6 +57,10 @@ tar -zxvf lapack-3.4.0.tgz
 cd lapack-3.4.0.tgz
 cp INSTALL/make.inc.gfortran make.inc
 ## make.incをhttps://thelinuxcluster.com/2012/04/09/building-lapack-3-4-with-intel-and-gnu-compiler/ に従って編集しましょう
+# 下記のように該当変数の書き換えを行います
+# PLAT = _LINUX
+# OPTS = -O2 -m64 -fPIC
+# NOOPT = -m64 -fPIC
 
 make lapacklib
 make clean
