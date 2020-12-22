@@ -1,4 +1,4 @@
-# nvd2系インスタンスにNvidia HPC SDKと他数値計算ライブラリ群を導入する
+# nvd2系インスタンスにNvidia HPC SDKと数値計算ライブラリ群を導入する
 ## 目的
 1. OpenACCの有効化(GPU)
 2. FTTW3の動作(CPU)
@@ -112,4 +112,23 @@ sudo make install
 sudo vi /etc/ld.so.conf
 # /usr/local/lib を追記して保存
 sudo /sbin/ldconfig
+```
+
+### 動作検証
+以下のコードを用いて動作検証を行う
+```Fortran
+program sample
+  implicit none
+  include 'fftw3.f'
+
+  write(*, *) FFTW_ESTIMATE
+
+  stop
+end program sample
+```
+`sample.f90`というファイル名で保存し、FFTW3を用いてコンパイルを行う：
+```bash
+mpif90 -c sample.f90 -I/usr/local/include
+mpif90 -o fftw-test sample.o -L/usr/local/lib -lfftw3
+./fftw-test  # 64という値が出力されれば動作確認成功
 ```
