@@ -50,8 +50,10 @@ export PATH="$PATH:/opt/nvidia/hpc_sdk/Linux_x86_64/20.11/compilers/bin"
 ```bash
 cd
 code .bashrc
-## これで開いた「.bashrc」というファイルに以下の文を追加して保存
+## これで開いた「.bashrc」というファイルの一番下に以下の文を追加して保存
 export PATH="$PATH:/opt/nvidia/hpc_sdk/Linux_x86_64/20.11/compilers/bin"
+
+## 追記と保存が完了したら下記コマンドを実行
 source .bashrc
 ```
 
