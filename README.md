@@ -34,10 +34,25 @@ sudo apt-get install ./nvhpc-20-11_20.11_amd64.deb ./nvhpc-2020_20.11_amd64.deb 
 
 ### パスの追加
 Nvidia HPC SDKのインストールが完了したら、「パスを通す」という作業を行います。<br/>
-コマンド(コンパイラで言えばコンパイル時に頭につけるgfortran, pgfortran, mpifortなど)を有効化するために必要です。<br/>
+コマンド(コンパイラで言えばコンパイル時に頭につけるgfortran, pgfortran, mpifortなど)を有効化するために必要です（厳密には、フルパスで実行せずに済ますための処理です）。<br/>
 下記のコマンドを実行することでパスの追加は完了します。
 ```bash
 export PATH="$PATH:/opt/nvidia/hpc_sdk/Linux_x86_64/20.11/compilers/bin"
+```
+
+注意: 上記のコマンド実行の場合、インスタンスにターミナルからアクセスしている時しか有効化されません。
+毎回上記のコマンドを打ちたくない場合は以下の節で設定を行う必要があります。
+
+### パスの追加（発展編）
+前節でのパスの通し方では、インスタンスからログアウトして再度ログインした際、パスがなくなってしまいます。<br/>
+これを回避するため、「インスタンスンのログインをトリガとして上記のコマンドを実行する」処置を取ります。<br/>
+具体的には、`.bashrc`というファイルを編集します。<br/>
+```bash
+cd
+code .bashrc
+## これで開いた「.bashrc」というファイルに以下の文を追加して保存
+export PATH="$PATH:/opt/nvidia/hpc_sdk/Linux_x86_64/20.11/compilers/bin"
+source .bashrc
 ```
 
 ## ScaLAPACKの導入
