@@ -32,6 +32,14 @@ wget https://developer.download.nvidia.com/hpc-sdk/20.11/nvhpc-20-11-cuda-multi_
 sudo apt-get install ./nvhpc-20-11_20.11_amd64.deb ./nvhpc-2020_20.11_amd64.deb ./nvhpc-20-11-cuda-multi_20.11_amd64.deb
 ```
 
+### パスの追加
+Nvidia HPC SDKのインストールが完了したら、「パスを通す」という作業を行います。<br/>
+コマンド(コンパイラで言えばコンパイル時に頭につけるgfortran, pgfortran, mpifortなど)を有効化するために必要です。<br/>
+下記のコマンドを実行することでパスの追加は完了します。
+```bash
+export PATH="$PATH:/opt/nvidia/hpc_sdk/Linux_x86_64/20.11/compilers/bin"
+```
+
 ## ScaLAPACKの導入
 ### BLAS(v3.8.0)の導入
 ```bash
