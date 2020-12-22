@@ -17,6 +17,12 @@
 - VSCodeからのファイル編集環境確立(オプション)
 [参考](https://gpu-advance.highreso.jp/blog/?p=301)
 
+## makeとvimの導入
+```bash
+sudo apt update
+sudo apt install -y make vim
+```
+
 ## Nvidi HPC SDKの導入
 ```bash
 cd
@@ -24,11 +30,6 @@ wget https://developer.download.nvidia.com/hpc-sdk/20.11/nvhpc-20-11_20.11_amd64
 wget https://developer.download.nvidia.com/hpc-sdk/20.11/nvhpc-2020_20.11_amd64.deb 
 wget https://developer.download.nvidia.com/hpc-sdk/20.11/nvhpc-20-11-cuda-multi_20.11_amd64.deb
 sudo apt-get install ./nvhpc-20-11_20.11_amd64.deb ./nvhpc-2020_20.11_amd64.deb ./nvhpc-20-11-cuda-multi_20.11_amd64.deb
-```
-## makeとvimの導入
-```bash
-sudo apt update
-sudo apt install -y make vim
 ```
 
 ## ScaLAPACKの導入
