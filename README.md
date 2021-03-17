@@ -90,7 +90,7 @@ cp INSTALL/make.inc.gfortran make.inc
 make lapacklib
 make clean
 mkdir -p /usr/local/lapack
-cp liblapack.a 
+cp liblapack.a liblapack.a.bk
 mv liblapack.a /usr/local/lapack/
 export LAPACK=/usr/local/lapack/liblapack.a
 ```
@@ -118,8 +118,29 @@ cp SLmake.inc.example SLmake.inc
 ## SLmak.inceを編集し下記の環境変数を設定します(https://thelinuxcluster.com/2020/05/13/compiling-scalapack-2-0-2-on-centos-7/)
 # BLASLIB       = /usr/local/BLAS/libblas.a
 # LAPACKLIB     = /usr/local/lapack/liblapack.a
+make
 cd
 cp -r scalapack-2.0.2 /usr/local/
+```
+
+## .bashrcの編集
+```bash
+# Nvidia HPC SDKへの実行パスを通す
+export PATH="$PATH:/opt/nvidia/hpc_sdk/Linux_x86_64/20.11/compilers/bin"
+
+# BLAS用環境変数の設定
+export BLAS=/usr/local/BLAS/libfblas.a
+
+# LAPACK用環境変数の設定
+export LAPACK=/usr/local/lapack/liblapack.a
+
+# OpenMPI用パス群設定
+PATH=/opt/openMPI/bin:$PATH
+LD_LIBRARY_PATH=/opt/openMPI/lib:$LD_LIBRARY_PATH
+MANPATH=/opt/openMPI/share/man:$MANPATH
+export PATH LD_LIBRARY_PATH MANPATH
+
+## 追加後source ~/.bashrchで読み込み
 ```
 
 ### 動作検証
@@ -128,6 +149,8 @@ cd
 wget http://www.netlib.org/scalapack/examples/sample_pssyev_call.f
 mpif90 -O3 -o TEST_sample_pssyev_call sample_pssyev_call.f /usr/local/scalapack-2.0.2/libscalapack.a -llapack -L/usr/local/lapack/lib -lblas -L/usr/local/BLAS
 # または mpifort -O3 -o TEST_sample_pssyev_call sample_pssyev_call.f /usr/local/scalapack-2.0.2/libscalapack.a -llapack -L/usr/local/lapack/lib -lblas -L/usr/local/BLAS
+## 以下が正かも
+mpif90 -O3 -o TEST_sample_pssyev_call sample_pssyev_call.f /usr/local/scalapack-2.0.2/libscalapack.a -llapack -L/usr/local/lapack -lblas -L/usr/local/BLAS
 mpirun ./TEST_sample_pssyev_call
 ```
 
