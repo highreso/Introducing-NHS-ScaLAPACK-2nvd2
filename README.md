@@ -79,10 +79,10 @@ mv ~/BLAS /usr/local/
 cd
 wget http://www.netlib.org/lapack/lapack-3.4.0.tgz
 tar -zxvf lapack-3.4.0.tgz
-cd lapack-3.4.0.tgz
+cd lapack-3.4.0
 cp INSTALL/make.inc.gfortran make.inc
-## make.incをhttps://thelinuxcluster.com/2012/04/09/building-lapack-3-4-with-intel-and-gnu-compiler/ に従って編集しましょう
-# 下記のように該当変数の書き換えを行います
+## make.incをhttps://thelinuxcluster.com/2012/04/09/building-lapack-3-4-with-intel-and-gnu-compiler/ に従って編集します
+# 下記のように該当変数の書き換え・追加を行います
 # PLAT = _LINUX
 # OPTS = -O2 -m64 -fPIC
 # NOOPT = -m64 -fPIC
@@ -115,7 +115,7 @@ wget http://www.netlib.org/scalapack/scalapack-2.0.2.tgz
 tar -zxvf scalapack-2.0.2.tgz
 cd scalapack-2.0.2
 cp SLmake.inc.example SLmake.inc
-## SLmakeを編集(https://thelinuxcluster.com/2020/05/13/compiling-scalapack-2-0-2-on-centos-7/)
+## SLmak.inceを編集し下記の環境変数を設定します(https://thelinuxcluster.com/2020/05/13/compiling-scalapack-2-0-2-on-centos-7/)
 # BLASLIB       = /usr/local/BLAS/libblas.a
 # LAPACKLIB     = /usr/local/lapack/liblapack.a
 cd
