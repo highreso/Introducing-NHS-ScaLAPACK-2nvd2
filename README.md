@@ -149,7 +149,7 @@ cd
 wget http://www.netlib.org/scalapack/examples/sample_pssyev_call.f
 mpif90 -O3 -o TEST_sample_pssyev_call sample_pssyev_call.f /usr/local/scalapack-2.0.2/libscalapack.a -llapack -L/usr/local/lapack/lib -lblas -L/usr/local/BLAS
 # または mpifort -O3 -o TEST_sample_pssyev_call sample_pssyev_call.f /usr/local/scalapack-2.0.2/libscalapack.a -llapack -L/usr/local/lapack/lib -lblas -L/usr/local/BLAS
-## 以下が正かも
+## 以下が正かも（nvd2ubではこちらで動きました
 mpif90 -O3 -o TEST_sample_pssyev_call sample_pssyev_call.f /usr/local/scalapack-2.0.2/libscalapack.a -llapack -L/usr/local/lapack -lblas -L/usr/local/BLAS
 mpirun ./TEST_sample_pssyev_call
 ```
